@@ -41,5 +41,6 @@ Build goal: not sure yet. I'll decide along the way.
 | Date | Lesson | Quiz | Note |
 |------|--------|------|------|
 | 2026-10-17 | 00/01-dev-environment | 3/3 | Intel Mac (i7-8850H, macOS 15.5): Homebrew has no bottles and CLT is too old, so uv came from the astral installer. torch capped at 2.2.2 with numpy<2. MPS True via Radeon Pro 560X (learner predicted False). git is still 2.18.0 (old). |
+| 2026-10-18 | 00/02-git-and-collaboration | 3/3 | Fixed SSH from scratch: ed25519 key, Keychain agent, origin switched to SSH, pushed `my-progress` to fork with -u. Explained key auth as signature check. Learned `!` can't answer interactive prompts (passphrase). |
 
 ## Review queue
