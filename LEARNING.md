@@ -42,5 +42,7 @@ Build goal: not sure yet. I'll decide along the way.
 |------|--------|------|------|
 | 2026-10-17 | 00/01-dev-environment | 3/3 | Intel Mac (i7-8850H, macOS 15.5): Homebrew has no bottles and CLT is too old, so uv came from the astral installer. torch capped at 2.2.2 with numpy<2. MPS True via Radeon Pro 560X (learner predicted False). git is still 2.18.0 (old). |
 | 2026-10-18 | 00/02-git-and-collaboration | 3/3 | Fixed SSH from scratch: ed25519 key, Keychain agent, origin switched to SSH, pushed `my-progress` to fork with -u. Explained key auth as signature check. Learned `!` can't answer interactive prompts (passphrase). |
+| 2026-10-18 | 00/03-gpu-setup-and-cloud | 2/3 | No CUDA; MPS benchmark on Radeon Pro 560X (4 GB): GPU loses at 10-500, ~3x at 2000-4000. Predicted overhead for small matmuls; unsure on sync until no-sync timing (~0.2 ms) shown. Needed a walkthrough for VRAM/2 rule, then got 8 GB -> 4B. Missed nvidia-smi (picked torch.cuda.list_devices). |
 
 ## Review queue
+- 00/03-gpu-setup-and-cloud: `nvidia-smi` (NVIDIA GPU status CLI; driver, CUDA version, VRAM, processes). Practise on Colab T4.
