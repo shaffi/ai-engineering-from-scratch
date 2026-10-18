@@ -46,3 +46,26 @@ Build goal: not sure yet. I'll decide along the way.
 
 ## Review queue
 - 00/03-gpu-setup-and-cloud: `nvidia-smi` (NVIDIA GPU status CLI; driver, CUDA version, VRAM, processes). Practise on Colab T4.
+
+## Resume notes
+_Last updated 2026-10-18. Read this first when resuming._
+
+**Next lesson:** 00/04-apis-and-keys (`phases/00-setup-and-tooling/04-apis-and-keys/`, code: `first_api_call.py`, `first_api_call.ts`). Warm-up from 00/03 quiz (pre questions not yet asked: why GPUs are faster, what VRAM is). Revisit the review item `nvidia-smi` when Colab comes up.
+**Heads-up for 00/04:** needs an LLM API key. Keep it in an env var or a gitignored `.env`, never in a commit (the fork `shaffi/ai-engineering-from-scratch` is public on GitHub).
+
+**Machine**
+- Intel MacBook Pro, i7-8850H (6 cores), macOS 15.5. GPUs: Radeon Pro 560X (4 GB VRAM) + Intel UHD 630.
+- No CUDA. PyTorch MPS works (built + available). Device pick: cuda -> mps -> cpu.
+- Python venv at repo root `.venv` (made with uv from the astral installer; Homebrew has no bottles here). torch 2.2.2, numpy<2. Run lesson code as `.venv/bin/python ...` from the repo root.
+- MPS matmul benchmark (00/03): GPU slower at 10x10 and 500x500, ~3x faster at 2000-4000. Heavy phases (4+) should use Colab T4.
+
+**Git**
+- Apple git 2.39.5. Branch `my-progress` tracks `origin/my-progress` (`-u` set), so plain `git push` works.
+- `origin` = git@github.com:shaffi/ai-engineering-from-scratch.git (SSH), `upstream` = rohitg00 repo (HTTPS).
+- SSH key `~/.ssh/id_ed25519` is on GitHub and stored in the macOS Keychain; `ssh -T git@github.com` says "Hi shaffi".
+- Routine after each lesson: `git commit -am "chore: log 00/NN"` then `git push`.
+
+**How the learner learns best**
+- Short replies ("C", "not sure", "I dont know"). When unsure, break it into small numbered steps with concrete numbers, then give a quick check question. That worked for the VRAM rule.
+- Gets intuition right (predicted GPU overhead on small matrices). Running a real experiment on their own machine helped the most (no-sync timing).
+- `!` commands in Claude Code cannot answer interactive prompts (passwords, passphrases). Use a separate Terminal.app window for those.
