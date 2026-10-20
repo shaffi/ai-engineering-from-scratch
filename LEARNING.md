@@ -43,15 +43,20 @@ Build goal: not sure yet. I'll decide along the way.
 | 2026-10-17 | 00/01-dev-environment | 3/3 | Intel Mac (i7-8850H, macOS 15.5): Homebrew has no bottles and CLT is too old, so uv came from the astral installer. torch capped at 2.2.2 with numpy<2. MPS True via Radeon Pro 560X (learner predicted False). git is still 2.18.0 (old). |
 | 2026-10-18 | 00/02-git-and-collaboration | 3/3 | Fixed SSH from scratch: ed25519 key, Keychain agent, origin switched to SSH, pushed `my-progress` to fork with -u. Explained key auth as signature check. Learned `!` can't answer interactive prompts (passphrase). |
 | 2026-10-18 | 00/03-gpu-setup-and-cloud | 2/3 | No CUDA; MPS benchmark on Radeon Pro 560X (4 GB): GPU loses at 10-500, ~3x at 2000-4000. Predicted overhead for small matmuls; unsure on sync until no-sync timing (~0.2 ms) shown. Needed a walkthrough for VRAM/2 rule, then got 8 GB -> 4B. Missed nvidia-smi (picked torch.cuda.list_devices). |
+| 2026-10-21 | 00/04-apis-and-keys | 3/3 | Key in gitignored `.env` (chmod 600), loaded with `set -a; source .env; set +a`. Debugged 400 "credit balance too low" (deduced key was valid since auth is checked first), confirmed with fake-key 401. Credits took a few minutes to reach the API, then SDK + raw HTTP both worked (18 in / 61-79 out). Missed VRAM in warm-up (picked swap). Noted .env is not the strongest storage (Keychain, secret managers). |
 
 ## Review queue
 - 00/03-gpu-setup-and-cloud: `nvidia-smi` (NVIDIA GPU status CLI; driver, CUDA version, VRAM, processes). Practise on Colab T4.
 
 ## Resume notes
-_Last updated 2026-10-18. Read this first when resuming._
+_Last updated 2026-10-21. Read this first when resuming._
 
-**Next lesson:** 00/04-apis-and-keys (`phases/00-setup-and-tooling/04-apis-and-keys/`, code: `first_api_call.py`, `first_api_call.ts`). Warm-up from 00/03 quiz (pre questions not yet asked: why GPUs are faster, what VRAM is). Revisit the review item `nvidia-smi` when Colab comes up.
-**Heads-up for 00/04:** needs an LLM API key. Keep it in an env var or a gitignored `.env`, never in a commit (the fork `shaffi/ai-engineering-from-scratch` is public on GitHub).
+**Next lesson:** 00/05-jupyter-notebooks (`phases/00-setup-and-tooling/05-jupyter-notebooks/`). Warm-up from 00/04 quiz (unasked pre questions: what an API key is for, why not hardcode). Re-check VRAM vs swap (missed in 00/04 warm-up). Revisit the review item `nvidia-smi` when Colab comes up.
+
+**API key (00/04)**
+- `ANTHROPIC_API_KEY` lives only in repo-root `.env` (gitignored, chmod 600). Never paste it in chat.
+- Load before running: `set -a; source .env; set +a` (stdlib-first, no python-dotenv).
+- `anthropic` SDK 1.17.0 installed in `.venv`. Account has $100 promotional API credit (expires 2026-11-05).
 
 **Machine**
 - Intel MacBook Pro, i7-8850H (6 cores), macOS 15.5. GPUs: Radeon Pro 560X (4 GB VRAM) + Intel UHD 630.
