@@ -44,12 +44,19 @@ Build goal: not sure yet. I'll decide along the way.
 | 2026-10-18 | 00/02-git-and-collaboration | 3/3 | Fixed SSH from scratch: ed25519 key, Keychain agent, origin switched to SSH, pushed `my-progress` to fork with -u. Explained key auth as signature check. Learned `!` can't answer interactive prompts (passphrase). |
 | 2026-10-18 | 00/03-gpu-setup-and-cloud | 2/3 | No CUDA; MPS benchmark on Radeon Pro 560X (4 GB): GPU loses at 10-500, ~3x at 2000-4000. Predicted overhead for small matmuls; unsure on sync until no-sync timing (~0.2 ms) shown. Needed a walkthrough for VRAM/2 rule, then got 8 GB -> 4B. Missed nvidia-smi (picked torch.cuda.list_devices). |
 | 2026-10-21 | 00/04-apis-and-keys | 3/3 | Key in gitignored `.env` (chmod 600), loaded with `set -a; source .env; set +a`. Debugged 400 "credit balance too low" (deduced key was valid since auth is checked first), confirmed with fake-key 401. Credits took a few minutes to reach the API, then SDK + raw HTTP both worked (18 in / 61-79 out). Missed VRAM in warm-up (picked swap). Noted .env is not the strongest storage (Keychain, secret managers). |
+| 2026-10-21 | 00/06-python-environments | skipped | Experienced SWE; general tooling, not AI-specific. |
+| 2026-10-21 | 00/07-docker-for-ai | skipped | Experienced SWE; general tooling, not AI-specific. |
+| 2026-10-21 | 00/08-editor-setup | skipped | Experienced SWE; general tooling, not AI-specific. |
+| 2026-10-21 | 00/10-terminal-and-shell | skipped | Experienced SWE; general tooling, not AI-specific. |
+| 2026-10-21 | 00/11-linux-for-ai | skipped | Experienced SWE; general tooling, not AI-specific. |
 
 ## Review queue
 - 00/03-gpu-setup-and-cloud: `nvidia-smi` (NVIDIA GPU status CLI; driver, CUDA version, VRAM, processes). Practise on Colab T4.
 
 ## Resume notes
 _Last updated 2026-10-21. Read this first when resuming._
+
+**Teaching mode (from 2026-10-21):** learner is an experienced software engineer. Go fast on general SWE topics, spend depth on AI/ML. Phase 0 fast-track: 05, 09, 12, 13 at ~15 min each, AI parts only (05 notebook traps + %timeit; 09 HF datasets, Parquet, seeded leak-free splits; 12 NaN loss, shape/device bugs, data leakage; 13 NumPy broadcasting vs Python loops only). 06/07/08/10/11 skipped. Then Phase 1.
 
 **Next lesson:** 00/05-jupyter-notebooks (`phases/00-setup-and-tooling/05-jupyter-notebooks/`). Warm-up from 00/04 quiz (unasked pre questions: what an API key is for, why not hardcode). Re-check VRAM vs swap (missed in 00/04 warm-up). Revisit the review item `nvidia-smi` when Colab comes up.
 
